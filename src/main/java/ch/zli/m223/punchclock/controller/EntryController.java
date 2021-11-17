@@ -4,9 +4,12 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -30,12 +33,31 @@ public class EntryController {
         return entryService.findAll();
     }
 
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Gets one entry", description = "")
+    public Entry getSingleEntry(@PathParam("id") Long id) {
+        return entryService.getSingleEntry(id);
+    }
+
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "Add a new Entry", description = "The newly created entry is returned. The id may not be passed.")
     public Entry add(Entry entry) {
-       return entryService.createEntry(entry);
+        return entryService.createEntry(entry);
     }
 
+    @DELETE
+    @Path("/{id}")
+    @Operation(summary = "Delete an entry", description = "Deletes an entry")
+    public void delete(@PathParam("id") Long id) {
+        entryService.deleteEntry(id);
+    }
+
+    @PUT
+    public void updateEntry(Entry entry) {
+        entryService.updateEntry(entry);
+    }
 }
