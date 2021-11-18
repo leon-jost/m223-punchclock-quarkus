@@ -8,8 +8,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import ch.zli.m223.punchclock.domain.Role;
 import ch.zli.m223.punchclock.domain.User;
 import ch.zli.m223.punchclock.service.AuthenticationService;
+import ch.zli.m223.punchclock.service.RoleService;
 import ch.zli.m223.punchclock.service.UserService;
 
 @Path("/auth")
@@ -17,6 +19,7 @@ public class AuthentificationController {
     @Inject
     AuthenticationService authenticationService;
     @Inject UserService userService;
+    @Inject RoleService roleService;
 
     @POST
     @Path("/login")
@@ -38,6 +41,7 @@ public class AuthentificationController {
         if (authenticationService.checkIfUserExists(user)) {
             throw new NotAuthorizedException("User already exists.");
         } else {
+            user.setRole(roleService.getRole(1l));
             userService.addUser(user);
             return authenticationService.generateValidJwtToken(user.getUsername());
         }
