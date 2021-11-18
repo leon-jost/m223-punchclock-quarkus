@@ -20,6 +20,18 @@ public class Entry {
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
+    @ManyToOne
+    @JoinColumn(name = "project_id", nullable = true)
+    private Project project;
+    
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
     public Category getCategory() {
         return category;
     }

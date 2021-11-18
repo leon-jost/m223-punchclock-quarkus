@@ -12,26 +12,24 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Category {
+public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    
     @Column(nullable = false)
     private String title;
 
-    // Angabe: entweder fetchtype.lazy oder jsonignore
-    // Erkenntnis: FetchType.LAZY scheint nichts zu machen, lieber einfach JsonIgnore benutzen
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "project")
     @JsonIgnore
     private List<Entry> entries;
 
-    public List<Entry> getEntries() {
-        return entries;
+    public Long getId() {
+        return id;
     }
 
-    public void setEntries(List<Entry> entries) {
-        this.entries = entries;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -42,11 +40,11 @@ public class Category {
         this.title = title;
     }
 
-    public Long getId() {
-        return id;
+    public List<Entry> getEntries() {
+        return entries;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setEntries(List<Entry> entries) {
+        this.entries = entries;
     }
 }
