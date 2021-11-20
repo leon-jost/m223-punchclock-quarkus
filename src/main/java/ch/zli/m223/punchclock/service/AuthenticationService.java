@@ -7,10 +7,12 @@ import java.util.HashSet;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 import io.smallrye.jwt.build.Jwt;
 import org.eclipse.microprofile.jwt.Claims;
 
+import ch.zli.m223.punchclock.domain.Role;
 import ch.zli.m223.punchclock.domain.User;
 
 @RequestScoped
@@ -33,5 +35,12 @@ public class AuthenticationService {
 
         var result = query.getSingleResult();
         return (long)result == 1;
+    }
+
+    @Transactional 
+    public User registerUser(User user) {
+        user.setRole(entityManager.find(Role.class, 1l));
+        entityManager.persist(user);
+        return user;
     }
 }

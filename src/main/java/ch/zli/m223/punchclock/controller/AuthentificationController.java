@@ -18,8 +18,6 @@ import ch.zli.m223.punchclock.service.UserService;
 public class AuthentificationController {
     @Inject
     AuthenticationService authenticationService;
-    @Inject UserService userService;
-    @Inject RoleService roleService;
 
     @POST
     @Path("/login")
@@ -41,8 +39,7 @@ public class AuthentificationController {
         if (authenticationService.checkIfUserExists(user)) {
             throw new NotAuthorizedException("User already exists.");
         } else {
-            user.setRole(roleService.getRole(1l));
-            userService.addUser(user);
+            authenticationService.registerUser(user);
             return authenticationService.generateValidJwtToken(user.getUsername());
         }
     }

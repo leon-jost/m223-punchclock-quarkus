@@ -19,7 +19,7 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 import ch.zli.m223.punchclock.domain.Entry;
 import ch.zli.m223.punchclock.service.EntryService;
 
-@Path("/entries")
+@Path("/entry")
 @Tag(name = "Entries", description = "Handling of entries")
 public class EntryController {
 
