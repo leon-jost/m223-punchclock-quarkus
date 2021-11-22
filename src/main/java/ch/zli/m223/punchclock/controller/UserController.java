@@ -29,7 +29,7 @@ public class UserController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Gets all users", description = "")
+    @Operation(summary = "Gets all users", description = "Gets all users")
     public List<User> getUsers() {
         return userService.getUsers();
     }
@@ -37,7 +37,7 @@ public class UserController {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Gets one user", description = "")
+    @Operation(summary = "Gets one user", description = "Gets one user")
     public User getUser(@PathParam("id") Long id) {
         return userService.getUser(id);
     }
@@ -58,6 +58,7 @@ public class UserController {
     }
 
     @PUT
+    @Operation(summary = "Update an user", description = "Updates an user")
     public void updateUser(User entry) {
         userService.updateUser(entry);
     }

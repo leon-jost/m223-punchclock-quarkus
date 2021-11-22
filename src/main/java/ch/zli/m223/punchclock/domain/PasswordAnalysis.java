@@ -1,14 +1,14 @@
 package ch.zli.m223.punchclock.domain;
 
 public class PasswordAnalysis {
-    private int passwordLenght;
+    private int passwordLength;
     private int amountOfOccurrences;
 
-    public int getPasswordLenght() {
-        return passwordLenght;
+    public int getPasswordLength() {
+        return passwordLength;
     }
-    public void setPasswordLenght(int passwordLenght) {
-        this.passwordLenght = passwordLenght;
+    public void setPasswordLength(int passwordLength) {
+        this.passwordLength = passwordLength;
     }
     public int getAmountOfOccurrences() {
         return amountOfOccurrences;

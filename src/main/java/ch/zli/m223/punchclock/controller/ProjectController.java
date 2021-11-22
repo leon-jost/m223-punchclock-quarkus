@@ -28,7 +28,7 @@ public class ProjectController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Gets all projects", description = "")
+    @Operation(summary = "Gets all projects", description = "Gets all projects")
     public List<Project> getProjects() {
         return projectService.getProjects();
     }
@@ -36,7 +36,7 @@ public class ProjectController {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Gets one project", description = "")
+    @Operation(summary = "Gets one project", description = "Gets one project")
     public Project getProject(@PathParam("id") Long id) {
         return projectService.getProject(id);
     }
@@ -57,6 +57,7 @@ public class ProjectController {
     }
 
     @PUT
+    @Operation(summary = "Update a project", description = "Updates a project")
     public void updateProject(Project project) {
         projectService.updateProject(project);
     }

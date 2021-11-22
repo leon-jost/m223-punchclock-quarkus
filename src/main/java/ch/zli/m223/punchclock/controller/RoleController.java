@@ -16,19 +16,19 @@ import javax.ws.rs.core.MediaType;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
-import ch.zli.m223.punchclock.domain.Category;
-import ch.zli.m223.punchclock.service.CategoryService;
+import ch.zli.m223.punchclock.domain.Role;
+import ch.zli.m223.punchclock.service.RoleService;
 
-@Path("/category")
-@Tag(name = "Category", description = "Handling of categories")
-public class CategoryController {
+@Path("/role")
+@Tag(name = "Role", description = "Handling of roles")
+public class RoleController {
     @Inject
-    CategoryService categoryService;
+    RoleService roleService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Gets all categories", description = "Returns all categories")
-    public List<Category> getCategories() {
-        return categoryService.getCategories();
+    @Operation(summary = "Gets all roles", description = "Returns all roles")
+    public List<Role> getRoles() {
+        return roleService.getRoles();
     }
 }

@@ -28,7 +28,7 @@ public class EntryController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Operation(summary = "List all Entries", description = "")
+    @Operation(summary = "List all Entries", description = "Returns all entries")
     public List<Entry> list() {
         return entryService.findAll();
     }
@@ -36,7 +36,7 @@ public class EntryController {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Gets one entry", description = "")
+    @Operation(summary = "Gets one entry", description = "Retruns one entry")
     public Entry getSingleEntry(@PathParam("id") Long id) {
         return entryService.getSingleEntry(id);
     }
@@ -57,6 +57,7 @@ public class EntryController {
     }
 
     @PUT
+    @Operation(summary = "Update an entry", description = "Updates an entry")
     public void updateEntry(Entry entry) {
         entryService.updateEntry(entry);
     }
