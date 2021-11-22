@@ -39,6 +39,10 @@ public class AuthenticationService {
 
     @Transactional 
     public User registerUser(User user) {
+        /* 
+         * Beim registrieren wird die User Rolle zugewiesen (nur ein Admin
+         * kann ein anderer Benutzer zum Admin befördern).
+         */
         user.setRole(entityManager.find(Role.class, 1l));
         entityManager.persist(user);
         return user;

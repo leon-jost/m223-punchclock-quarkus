@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import ch.zli.m223.punchclock.domain.Role;
 
 @ApplicationScoped
-@RolesAllowed("User")
+@RolesAllowed("Admin")
 public class RoleService {
     @Inject
     private EntityManager entityManager;

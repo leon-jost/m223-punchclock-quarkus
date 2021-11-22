@@ -11,7 +11,7 @@ import javax.transaction.Transactional;
 import ch.zli.m223.punchclock.domain.User;
 
 @ApplicationScoped
-@RolesAllowed("User")
+@RolesAllowed("Admin")
 public class UserService {
     @Inject
     private EntityManager entityManager;
