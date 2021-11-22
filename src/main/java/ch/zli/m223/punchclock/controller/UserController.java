@@ -16,6 +16,7 @@ import javax.ws.rs.core.MediaType;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
+import ch.zli.m223.punchclock.domain.PasswordAnalysis;
 import ch.zli.m223.punchclock.domain.User;
 import ch.zli.m223.punchclock.service.UserService;
 
@@ -59,5 +60,13 @@ public class UserController {
     @PUT
     public void updateUser(User entry) {
         userService.updateUser(entry);
+    }
+
+    @GET
+    @Path("/passwordLengthAnalysis")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Analyses the different lengths of the user passwords", description = "Returns the amount of passwords with a certain length that are above 8. eg. 10 (length of password), 3 (amount of times used/set by user)")
+    public List<PasswordAnalysis> passwordLengthAnalysis() {
+        return userService.passwordLengthAnalysis();
     }
 }
